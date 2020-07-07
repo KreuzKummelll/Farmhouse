@@ -8,6 +8,7 @@
 
 import SwiftUI
 import Combine
+import FarmhouseCore
 
 class FarmerListPresenter: ObservableObject {
     private let interactor: FarmerListInteractor

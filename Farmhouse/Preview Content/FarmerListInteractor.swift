@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FarmhouseCore
 
 class FarmerListInteractor {
     let model: DataModel

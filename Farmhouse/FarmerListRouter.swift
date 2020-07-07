@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import FarmhouseCore
 
 class FarmerListRouter {
     func makeDetailView(for farmer: Farmer, model: DataModel) -> some View {
