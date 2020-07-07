@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "FarmhouseCore",
+        "repositoryURL": "https://github.com/KreuzKummelll/FarmhouseCore.git",
+        "state": {
+          "branch": "master",
+          "revision": "9003f9dfe9e30873ffee0f2364b24e86a14e3736",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

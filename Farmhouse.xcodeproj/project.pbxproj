@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		475B277424B3F28200619BC7 /* FarmhouseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 475B277324B3F28200619BC7 /* FarmhouseCore */; };
+		4743300724B3FE83001F2D5D /* FarmhouseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 4743300624B3FE83001F2D5D /* FarmhouseCore */; };
 		475B277924B3F55200619BC7 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B277624B3F55200619BC7 /* Persistence.swift */; };
 		475B277A24B3F55200619BC7 /* ImageDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B277724B3F55200619BC7 /* ImageDataProvider.swift */; };
 		475B277B24B3F55200619BC7 /* MapDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B277824B3F55200619BC7 /* MapDataProvider.swift */; };
@@ -31,7 +31,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		475B276424B3F1A600619BC7 /* FarmhouseCore */ = {isa = PBXFileReference; lastKnownFileType = folder; name = FarmhouseCore; path = ../FarmhouseCore; sourceTree = "<group>"; };
 		475B277624B3F55200619BC7 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		475B277724B3F55200619BC7 /* ImageDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDataProvider.swift; sourceTree = "<group>"; };
 		475B277824B3F55200619BC7 /* MapDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDataProvider.swift; sourceTree = "<group>"; };
@@ -61,7 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				475B277424B3F28200619BC7 /* FarmhouseCore in Frameworks */,
+				4743300724B3FE83001F2D5D /* FarmhouseCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,7 +107,6 @@
 		4769D8382463D34100D378BD = {
 			isa = PBXGroup;
 			children = (
-				475B276424B3F1A600619BC7 /* FarmhouseCore */,
 				4769D8432463D34100D378BD /* Farmhouse */,
 				4769D8422463D34100D378BD /* Products */,
 				4721EA9124B3EA220066BC29 /* Frameworks */,
@@ -178,7 +176,7 @@
 			);
 			name = Farmhouse;
 			packageProductDependencies = (
-				475B277324B3F28200619BC7 /* FarmhouseCore */,
+				4743300624B3FE83001F2D5D /* FarmhouseCore */,
 			);
 			productName = Farmhouse;
 			productReference = 4769D8412463D34100D378BD /* Farmhouse.app */;
@@ -208,6 +206,9 @@
 				Base,
 			);
 			mainGroup = 4769D8382463D34100D378BD;
+			packageReferences = (
+				4743300524B3FE83001F2D5D /* XCRemoteSwiftPackageReference "FarmhouseCore" */,
+			);
 			productRefGroup = 4769D8422463D34100D378BD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -446,9 +447,21 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		4743300524B3FE83001F2D5D /* XCRemoteSwiftPackageReference "FarmhouseCore" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/KreuzKummelll/FarmhouseCore.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
-		475B277324B3F28200619BC7 /* FarmhouseCore */ = {
+		4743300624B3FE83001F2D5D /* FarmhouseCore */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = 4743300524B3FE83001F2D5D /* XCRemoteSwiftPackageReference "FarmhouseCore" */;
 			productName = FarmhouseCore;
 		};
 /* End XCSwiftPackageProductDependency section */
