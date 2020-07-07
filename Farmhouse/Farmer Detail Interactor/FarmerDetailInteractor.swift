@@ -8,6 +8,7 @@
 
 import Combine
 import MapKit
+import FarmhouseCore
 
 class FarmerDetailInteractor {
     private let farmer: Farmer

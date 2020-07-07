@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import FarmhouseCore
 
 struct FarmerListView: View {
     @ObservedObject var presenter: FarmerListPresenter

@@ -8,6 +8,7 @@
 
 import SwiftUI
 import Combine
+import FarmhouseCore
 
 struct FarmerListCell: View {
     let imageProvider: ImageDataProvider = PixabayImageDataProvider()

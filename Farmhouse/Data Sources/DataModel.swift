@@ -7,6 +7,8 @@
 //
 
 import Combine
+import FarmhouseCore
+
 
 final class DataModel {
     private let persistence: Persistence = Persistence()
