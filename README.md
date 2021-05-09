@@ -15,7 +15,7 @@ How it works:
 If Shopper:
 
  - [ ] Look for farms and storefronts in local area
- - [ ] Drive to locations and purachase produce
+ - [ ] Get Directions to storefornts
  - [ ] Purchase and reserve infrequent items
  - [ ] Rate and comment on storefront and produce quality and value
  
