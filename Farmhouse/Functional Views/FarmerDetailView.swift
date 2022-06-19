@@ -30,10 +30,10 @@ struct FarmerDetailView: View {
 struct TripDetailView_Previews: PreviewProvider {
     static var previews: some View {
         let model = DataModel.sample
-        let farmer = model.farmers[1]
-        let mapProvider = RealMapDataProvider()
-        let presenter = FarmerDetailPresenter(interactor:
-            FarmerDetailInteractor(
+        let farmer = model.farms[1]
+//        let mapProvider = RealMapDataProvider()
+        let presenter = FarmDetailPresenter(interactor:
+            FarmDetailInteractor(
                 farmer: farmer,
                 model: model,
                 mapInfoProvider: mapProvider))

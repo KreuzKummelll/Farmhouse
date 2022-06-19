@@ -19,6 +19,6 @@ class FarmerListInteractor {
         model.pushNewFarmer()
     }
     func deleteFarmer(_ index: IndexSet) {
-        model.farmers.remove(atOffsets: index)
+        model.farms.remove(atOffsets: index)
     }
 }

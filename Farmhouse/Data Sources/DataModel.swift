@@ -7,39 +7,49 @@
 //
 
 import Combine
-import FarmhouseCore
 
 
 final class DataModel {
     private let persistence: Persistence = Persistence()
     
-    @Published var farmers: [Farmer] = []
+    @Published var farms: [PublicFarm] = []
     
     private var cancellables = Set<AnyCancellable>()
     
     func load() {
         persistence.load()
-            .assign(to: \.farmers, on: self)
+            .assign(to: \.farms, on: self)
             .store(in: &cancellables)
     }
     
     func save() {
-        persistence.save(farmers: farmers)
+//        persistence.save(farms: farms)
     }
     
     func loadDefault(synchronous: Bool = false) {
-        persistence.loadDefault(synchronous: synchronous)
-            .assign(to: \.farmers, on: self)
-            .store(in: &cancellables)
+//        persistence.loadDefault(synchronous: synchronous)
+//            .assign(to: \.farms, on: self)
+//            .store(in: &cancellables)
     }
     func pushNewFarmer() {
-        let new = Farmer()
+        let new = PublicFarm()
         new.name = "New Farmer"
-        farmers.insert(new, at: 0)
+        farms.insert(new, at: 0)
     }
-    func removeFarmer(farmer: Farmer) {
-        farmers.removeAll { $0.id == farmer.id}
+    func removeFarm(farm: PublicFarm) {
+        farms.removeAll { $0.id == farm.id}
     }
+    
+    func pullFarms() {
+        WebAPI.getFarms { result in
+            switch result {
+            case .success(let profile): print(profile)
+            case .failure(let error): print("Error parsing Farms: \(error.localizedDescription)")
+            }
+        }
+        
+    }
+
 }
 
 extension DataModel: ObservableObject {}
@@ -48,7 +58,7 @@ extension DataModel: ObservableObject {}
 extension DataModel {
     static var sample: DataModel {
         let model = DataModel()
-        model.farmers = [Farmer()]
+        model.farms = [PublicFarm()]
         model.loadDefault(synchronous: true)
         return model
     }

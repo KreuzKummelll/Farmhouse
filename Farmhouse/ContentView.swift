@@ -10,13 +10,29 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var model: DataModel
+    
+    @State private var tabViewSelectionIndex = 1
+    
     var body: some View {
-        NavigationView {
-            FarmerListView(presenter:
-                FarmerListPresenter(interactor: FarmerListInteractor(model: model))
-            )
+        TabView(selection: $tabViewSelectionIndex) {
+            
+        HomeView()
+            .tabItem {
+                Image(systemName: "house")
+            }.tag(1)
+        
+        Text("Search")
+            .tabItem {
+                Image(systemName: "magnifyingglass")
+            }.tag(2)
+        }
+        
+        .onAppear{
+            model.pullFarms()
         }
     }
+    
+    
 }
 
 struct ContentView_Previews: PreviewProvider {

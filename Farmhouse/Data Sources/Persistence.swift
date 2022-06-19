@@ -8,10 +8,11 @@
 
 import Foundation
 import Combine
-import FarmhouseCore
+
+
 
 fileprivate struct Envelope: Codable {
-    let farmers: [Farmer]
+    let farmers: [PublicFarm]
 }
 
 class Persistence {
@@ -29,9 +30,9 @@ class Persistence {
         try? FileManager.default.removeItem(at: localFile)
     }
     
-    func load() -> AnyPublisher<[Farmer], Never> {
+    func load() -> AnyPublisher<[PublicFarm], Never> {
         if FileManager.default.fileExists(atPath: localFile.standardizedFileURL.path) {
-            return Future<[Farmer], Never> { promise in
+            return Future<[PublicFarm], Never> { promise in
                 self.load(self.localFile) { farmers in
                     DispatchQueue.main.async {
                         promise(.success(farmers))
@@ -43,7 +44,7 @@ class Persistence {
         }
     }
     
-    func save(farmers: [Farmer]) {
+    func save(farmers: [PublicFarm]) {
         let envelope = Envelope(farmers: farmers)
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
@@ -51,7 +52,7 @@ class Persistence {
         try! data.write(to: localFile)
     }
     
-    func loadSynchronously(_ file: URL) -> [Farmer] {
+    func loadSynchronously(_ file: URL) -> [PublicFarm] {
         do {
             let data = try Data(contentsOf: file)
             let envelope = try JSONDecoder().decode(Envelope.self, from: data)
@@ -62,18 +63,18 @@ class Persistence {
         }
     }
     
-    private func load(_ file: URL, completion: @escaping ([Farmer]) -> Void) {
+    private func load(_ file: URL, completion: @escaping ([PublicFarm]) -> Void) {
         DispatchQueue.global(qos: .background).async {
             let farmers = self.loadSynchronously(file)
             completion(farmers)
         }
     }
     
-    func loadDefault(synchronous: Bool = false) -> AnyPublisher<[Farmer], Never> {
+    func loadDefault(synchronous: Bool = false) -> AnyPublisher<[PublicFarm], Never> {
         if synchronous {
-            return Just<[Farmer]>(loadSynchronously(defaultFile))   .eraseToAnyPublisher()
+            return Just<[PublicFarm]>(loadSynchronously(defaultFile))   .eraseToAnyPublisher()
         }
-        return Future<[Farmer], Never> { promise in
+        return Future<[PublicFarm], Never> { promise in
             self.load(self.defaultFile) { farmers in
                 DispatchQueue.main.async {
                     promise(.success(farmers))

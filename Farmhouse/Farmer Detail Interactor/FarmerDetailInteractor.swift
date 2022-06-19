@@ -11,29 +11,29 @@ import MapKit
 import FarmhouseCore
 
 class FarmerDetailInteractor {
-    private let farmer: Farmer
+    private let farm: Farm
     private let model: DataModel
-    let mapInfoProvider: MapDataProvider
+//    let mapInfoProvider: MapDataProvider
     
-    var farmerName: String { farmer.name }
-    var farmerNamePublisher: Published<String>.Publisher { farmer.$name }
+    var farmName: String { farm.name }
+    var farmNamePublisher: Published<String>.Publisher { farm.$name }
     
     private var cancellables = Set<AnyCancellable>()
     
     @Published var totalDistance: Measurement<UnitLength> = Measurement(value: 0, unit: .meters)
-    @Published var waypoints: [Waypoint] = []
+//    @Published var waypoints: [Waypsoint] = []
     @Published var directions: [MKRoute] = []
     
     
-    init(farmer: Farmer, model: DataModel, mapInfoProvider: MapDataProvider) {
-        self.farmer = farmer
+    init(farmer: Farm, model: DataModel, mapInfoProvider: MapDataProvider) {
+        self.farm = farm
         self.mapInfoProvider = mapInfoProvider
         self.model = model
     }
     
     // Methods
     func setFarmerName(_ name: String) {
-        farmer.name = name
+        farm.name = name
     }
     func save() {
         model.save()

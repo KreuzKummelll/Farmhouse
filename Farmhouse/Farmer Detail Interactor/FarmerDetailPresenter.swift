@@ -13,18 +13,18 @@ import SwiftUI
 class FarmerDetailPresenter: ObservableObject {
     private let interactor: FarmerDetailInteractor
     private var cancellables = Set<AnyCancellable>()
-    @Published var farmerName: String = "No name"
+    @Published var farmName: String = "No name"
     
-    let setFarmerName: Binding<String>
+    let setFarmName: Binding<String>
 
     init(interactor: FarmerDetailInteractor) {
         self.interactor = interactor
         setFarmerName = Binding<String>(
-            get: {interactor.farmerName}, set: {interactor.setFarmerName($0) }
+            get: {interactor.farmName}, set: {interactor.setFarmerName($0) }
         )
         
-        interactor.farmerNamePublisher
-            .assign(to: \.farmerName, on: self)
+        interactor.farmNamePublisher
+            .assign(to: \.farmName, on: self)
             .store(in: &cancellables)
     }
     

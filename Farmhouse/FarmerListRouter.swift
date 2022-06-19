@@ -10,8 +10,10 @@ import SwiftUI
 import FarmhouseCore
 
 class FarmerListRouter {
-    func makeDetailView(for farmer: Farmer, model: DataModel) -> some View {
-        let present = FarmerDetailPresenter(interactor: FarmerDetailInteractor(farmer: farmer, model: model, mapInfoProvider: RealMapDataProvider()))
-        return FarmerDetailView(presenter: present)
-    }
+//    func makeDetailView(for farm: Farm, model: DataModel) -> some View {
+//        let present = FarmDetailPresenter(
+//            interactor: FarmDetailInteractor(
+//                farmer: farm, model: model, mapInfoProvider: RealMapDataProvider()))
+//        return FarmerDetailView(presenter: present)
+//    }
 }

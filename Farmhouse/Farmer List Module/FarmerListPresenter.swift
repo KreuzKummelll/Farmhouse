@@ -12,14 +12,14 @@ import FarmhouseCore
 
 class FarmerListPresenter: ObservableObject {
     private let interactor: FarmerListInteractor
-    @Published var farmers: [Farmer] = []
+    @Published var farms: [Farm] = []
     private var cancellables = Set<AnyCancellable>()
     private let router = FarmerListRouter()
     
     init(interactor: FarmerListInteractor) {
         self.interactor = interactor
-        interactor.model.$farmers
-            .assign(to: \.farmers, on: self)
+        interactor.model.$farms
+            .assign(to: \.farms, on: self)
             .store(in: &cancellables)
     }
     
@@ -36,8 +36,8 @@ class FarmerListPresenter: ObservableObject {
     func deleteFarmer(_ index: IndexSet) {
         interactor.deleteFarmer(index)
     }
-    func linkBuilder<Content: View>(for farmer: Farmer, @ViewBuilder content: () -> Content) -> some View {
-        NavigationLink(destination: router.makeDetailView(for: farmer, model: interactor.model)) {
+    func linkBuilder<Content: View>(for farmer: Farm, @ViewBuilder content: () -> Content) -> some View {
+        NavigationLink(destination: router.makeDetailView(for: farm, model: interactor.model)) {
             content()
         }
     }

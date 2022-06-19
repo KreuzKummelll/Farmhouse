@@ -16,7 +16,7 @@ enum CustomPhoto: String {
 }
 
 protocol ImageDataProvider {
-  func getEndImages(for farmer: Farmer) -> AnyPublisher<[UIImage], Never>
+  func getEndImages(for farmer: Farm) -> AnyPublisher<[UIImage], Never>
 }
 
 private struct PixabayResponse: Codable {
@@ -64,24 +64,5 @@ class PixabayImageDataProvider: ImageDataProvider {
     .eraseToAnyPublisher()
   }
 
-  func getEndImages(for farmer: Farmer) -> AnyPublisher<[UIImage], Never> {
-    if farmer.standLocations.count == 0 {
-      return Empty<[UIImage], Never>()
-        .eraseToAnyPublisher()
-    }
-    if farmer.standLocations.count == 1 {
-      return imageForQuery(query: farmer.standLocations[0].name)
-        .map { [$0] }
-        .receive(on: DispatchQueue.main)
-        .eraseToAnyPublisher()
-    }
-
-    let start = imageForQuery(query: farmer.standLocations[0].name)
-    let end = imageForQuery(query: farmer.standLocations.last!.name)
-
-    return Publishers.Merge(start, end)
-      .collect()
-      .receive(on: DispatchQueue.main)
-      .eraseToAnyPublisher()
-  }
+ 
 }
